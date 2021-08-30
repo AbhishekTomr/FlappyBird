@@ -1,5 +1,4 @@
 #canvas{display: none;}
-
 body{
     background-color: #87ceeb;
     display: flex;
@@ -7,6 +6,7 @@ body{
     align-items: center;
 }
 #warning{
+    display: inline-block;
     font-family: monospace;
     font-weight: bold;
     font-variant: small-caps;
