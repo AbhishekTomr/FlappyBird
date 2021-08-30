@@ -1,0 +1,19 @@
+#canvas{display: none;}
+
+body{
+    background-color: #87ceeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#warning{
+    font-family: monospace;
+    font-weight: bold;
+    font-variant: small-caps;
+    margin: 10vh;
+    font-size: 3vw;
+    text-align: center;
+}
+.fire{
+    display: none;
+}

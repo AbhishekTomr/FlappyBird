@@ -1,0 +1,34 @@
+*{
+  padding: 0;
+  margin: 0;
+  /* border: 1px solid black; */
+  box-sizing: border-box;
+}
+html,body{
+  height: 100vh;
+  width: 100vw;
+  /* overflow: hidden; */
+}
+
+/* fireworks */
+#fire1{
+  background-image: url("../img/fire1.gif");
+  left: 300px;
+}
+#fire2{
+  background-image: url("../img/fire2.gif");
+  left: 900px;
+}
+.fire{
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 30vh;
+
+  background-size: contain;
+  background-position: center center;
+  background-clip: padding-box;
+  background-origin: padding-box;
+
+  display: none;
+}
