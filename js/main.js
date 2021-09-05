@@ -3,7 +3,7 @@ document.querySelector("body").style.cursor="pointer";  //setting pointer to cur
 //setting up basic canvas
 let canvas = document.getElementById("canvas");
 let canvasContext = canvas.getContext("2d");
-canvas.height = 788;
+canvas.height = 790;
 canvas.width = 1440;
 
 
