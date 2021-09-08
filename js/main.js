@@ -343,14 +343,15 @@ let medal ={
   w : 45,
   h: 45,
   position : [{x:360,y:158},{x:360,y:112},{x:312,y:158}],
-  counter :-1,
+  counter : -1,
   drawImg:function(){
     if(state.current===state.end && this.counter>=0){
       canvasContext.drawImage(img,this.position[this.counter].x,this.position[this.counter].y,this.w,this.h,this.x,this.y,this.w,this.h);
     }
   },
   updateScore : function(){
-    if(scoreBoard.score>=(scoreBoard.best))
+    if(scoreBoard.best>5){  // medals will be only provided once the highscore is above 5
+      if(scoreBoard.score>=(scoreBoard.best))
     {
       this.counter=2;
     }
@@ -361,6 +362,7 @@ let medal ={
     else if(scoreBoard.score>=(scoreBoard.best*(1/3))){
       this.counter=0;
     }
+    }    
   }
 }
 
@@ -381,7 +383,6 @@ let startGame = {
   }, 
   start:function(){
     if(state.current===state.start){
-      medal.counter = -1;
       pipe.position.splice(0,pipe.position.length);
       ball.position.splice(0,ball.position.length);
     }
@@ -414,6 +415,7 @@ let gameOver = {
     bird.y=150;
     bird.speed=0;
     scoreBoard.score=0;
+    medal.counter = -1;
   }
 }
 
