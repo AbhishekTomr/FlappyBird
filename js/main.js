@@ -1,10 +1,15 @@
-document.querySelector("body").style.cursor="pointer";  //setting pointer to cursor
+
 
 //setting up basic canvas
 let canvas = document.getElementById("canvas");
 let canvasContext = canvas.getContext("2d");
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+
+function setDimension(){
+  canvas.height = innerHeight;
+  canvas.width = innerWidth;  
+}
+
+window.onload=setDimension();
 
 
 
@@ -32,6 +37,8 @@ let begin = new Audio();
 begin.src ="audio/swooshing.wav";
 
 
+
+
 let state = {
 current: 0,
 start: 0,
@@ -39,6 +46,41 @@ play: 1,    //state Object for 3 states
 end: 2 
 }
 
+//creating pointer on hover at right place
+canvas.addEventListener("mousemove",function(e){
+  let cvsP = canvas.getBoundingClientRect();
+  let clickX = e.clientX-cvsP.left;
+  let clickY = e.clientY-cvsP.top;
+  let sClickX1 = 705;
+  let sClickX2 = 739;
+  let sClickY1 = 306;
+  let sClickY2 = 354;
+  console.log(clickX,clickY);
+  if(state.current==state.start){
+    if(clickX>=sClickX1&&clickX<=sClickX2&&clickY>=sClickY1&&clickY<=sClickY2)
+      {
+        canvas.style.cursor = "pointer";
+      }
+   else{
+        canvas.style.cursor = "default";
+      }
+  }
+  if(state.current==state.play){
+    canvas.style.cursor == "pointer";
+  }
+  if(state.current==state.end){
+       let btnX1 =684;
+       let btnX2 =762;
+       let btnY1 =378;
+       let btnY2 =403;
+       if(clickX>=btnX1&&clickX<=btnX2&&clickY>=btnY1&&clickY<=btnY2){
+        canvas.style.cursor = "pointer";
+       }
+       else{
+        canvas.style.cursor = "default";
+      }
+  }
+})
 
 canvas.addEventListener("click",function(e){
   let cvsP = canvas.getBoundingClientRect();
