@@ -1,5 +1,3 @@
-
-
 //setting up basic canvas
 let canvas = document.getElementById("canvas");
 let canvasContext = canvas.getContext("2d");
@@ -48,13 +46,14 @@ end: 2
 
 //creating pointer on hover at right place
 canvas.addEventListener("mousemove",function(e){
+  //checking for starting game
   let cvsP = canvas.getBoundingClientRect();
   let clickX = e.clientX-cvsP.left;
   let clickY = e.clientY-cvsP.top;
   let sClickX1 = canvas.width/2 - 17.5;
   let sClickX2 = canvas.width/2 + 17.5;
-  let sClickY1 = canvas.height/2 - 37.5;
-  let sClickY2 = canvas.height/2 + 10.5;
+  let sClickY1 = startGame.y+90; 
+  let sClickY2 = canvas.height/2;
   console.log(clickX,clickY);
   if(state.current==state.start){
     if(clickX>=sClickX1&&clickX<=sClickX2&&clickY>=sClickY1&&clickY<=sClickY2)
@@ -68,6 +67,7 @@ canvas.addEventListener("mousemove",function(e){
   if(state.current==state.play){
     canvas.style.cursor == "pointer";
   }
+  //checking for ending game
   if(state.current==state.end){
        let btnX1 = canvas.width/2 - 39;
        let btnX2 = canvas.width/2 + 39;
@@ -82,6 +82,7 @@ canvas.addEventListener("mousemove",function(e){
   }
 })
 
+//event for stating and ending click functionality
 canvas.addEventListener("click",function(e){
   let cvsP = canvas.getBoundingClientRect();
   let clickX = e.clientX-cvsP.left;
@@ -92,8 +93,8 @@ canvas.addEventListener("click",function(e){
 
       let sClickX1 = canvas.width/2 - 17.5;
       let sClickX2 = canvas.width/2 + 17.5;
-      let sClickY1 = canvas.height/2 - 37.5;
-      let sClickY2 = canvas.height/2 + 10.5;
+      let sClickY1 = startGame.y+90; 
+      let sClickY2 = canvas.height/2;
       if(clickX>=sClickX1&&clickX<=sClickX2&&clickY>=sClickY1&&clickY<=sClickY2)
       {
         begin.play();
@@ -415,7 +416,7 @@ let startGame = {
   w : 173,
   h : 152,
   x : canvas.width/2 - (173/2),
-  y : 200,
+  y : canvas.height/2 - 152,
   drawImg:function(){
     if(state.current===state.start){
       document.querySelector("#fire1").style.display="none";
