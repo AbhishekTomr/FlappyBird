@@ -1,4 +1,8 @@
 #canvas{display: none;}
+#fire1,#fire2,.fire{
+    background-image: url("");
+    display: none;
+} 
 body{
     background-color: #87ceeb;
     display: flex;
@@ -13,7 +17,4 @@ body{
     margin: 10vh;
     font-size: 3vw;
     text-align: center;
-}
-.fire{
-    display: none;
 }
