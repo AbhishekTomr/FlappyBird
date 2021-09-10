@@ -373,8 +373,8 @@ let scoreBoard = {
     }
     canvasContext.fillStyle = "#000000";
     canvasContext.font = "25px monospace";
-    canvasContext.fillText(this.score,canvas.width/2+65,295);
-    canvasContext.fillText(this.best,canvas.width/2+65,340);
+    canvasContext.fillText(this.score,canvas.width/2+65,gameOver.y+95);
+    canvasContext.fillText(this.best,canvas.width/2+65,gameOver.y+135);
     }
   }
 }
