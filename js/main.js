@@ -54,7 +54,6 @@ canvas.addEventListener("mousemove",function(e){
   let sClickX2 = canvas.width/2 + 17.5;
   let sClickY1 = startGame.y+90; 
   let sClickY2 = canvas.height/2;
-  console.log(clickX,clickY);
   if(state.current==state.start){
     if(clickX>=sClickX1&&clickX<=sClickX2&&clickY>=sClickY1&&clickY<=sClickY2)
       {
@@ -171,7 +170,7 @@ let ground = {
 //bird Object
 let bird = {
   BirdCoordinates : [{bx:276,by:112},{bx:276,by:139},{bx:276,by:164},{bx:276,by:139}], //different coordinates for each picture (3 picture used)
-  x: canvas.width/15,
+  x: 150,
   y: canvas.height/5,
   w: 34,
   h: 26,
@@ -230,7 +229,7 @@ let bird = {
         TPx1 = p[i].x;
         TPx2 = p[i].x+pipe.w;
         TPy1 = p[i].y;
-        TPy2 = p[i].y+pipe.h;
+        TPy2 = p[i].y+pipe.hd;
         if((bx>=TPx1&&bx<=TPx2)&&(by>=TPy1&&by<=TPy2)){
           hit.play();
           gameOver.endGame();}
@@ -238,8 +237,8 @@ let bird = {
         by=this.y+this.h;
         BPx1 = p[i].x;
         BPx2 = p[i].x+pipe.w;
-        BPy1 = p[i].y+pipe.h+pipe.gap;
-        BPy2 = p[i].y+pipe.h+pipe.gap+pipe.gap;
+        BPy1 = p[i].y+pipe.hd+pipe.gap;
+        BPy2 = p[i].y+pipe.hd+pipe.gap+pipe.gap;
         if((bx>=BPx1&&bx<=BPx2)&&(by>=BPy1&&by<=BPy2)){
           hit.play();
           gameOver.endGame();}   
@@ -277,6 +276,8 @@ let pipe = {
   bottom : {sX:502,sY:0},
   w:53,
   h:400,
+  wd : 53,
+  hd : (canvas.height)/2,
   position : [],
   gap:120,   //gap between the two pipes
   maxYPos : -150,  //variable for deciding pipeLength
@@ -285,8 +286,8 @@ let pipe = {
     if(state.current!==state.start){
       for(let i=0;i<this.position.length;i++)
       {
-      canvasContext.drawImage(img,this.top.sX,this.top.sY,this.w,this.h,this.position[i].x,this.position[i].y,this.w,this.h);
-      canvasContext.drawImage(img,this.bottom.sX,this.bottom.sY,this.w,this.h,this.position[i].x,(this.position[i].y+this.h+this.gap),this.w,this.h);
+      canvasContext.drawImage(img,this.top.sX,this.top.sY,this.w,this.h,this.position[i].x,this.position[i].y,this.wd,this.hd);
+      canvasContext.drawImage(img,this.bottom.sX,this.bottom.sY,this.w,this.h,this.position[i].x,(this.position[i].y+this.hd+this.gap),this.wd,this.hd);
       }
   }
   },
@@ -302,7 +303,7 @@ let pipe = {
         let p = this.position[i];
          p.x -= this.dx;
         //what to do when pipe crosses the left end of screen
-         if(p.x+this.w<0){
+         if(p.x+this.wd<0){
           this.position.shift();
         }
       }
@@ -329,7 +330,7 @@ let ball = {
   moveBall:function(){
     if(state.current===state.play){
       if(frameCounter%100===0){
-        let p = {x : canvas.width, y : (Math.random()*400)};
+        let p = {x : canvas.width, y : (Math.random()*(canvas.height)*(2/3))};
         this.position.push(p);
       }
       for(let i=0;i<this.position.length;i++){
@@ -359,7 +360,7 @@ let scoreBoard = {
       let p = pipe.position;
       for(let i =0;i<p.length;i++)
       {
-        if(p[i].x+pipe.w+1==+bird.x||p[i].x+pipe.w+2===bird.x||p[i].x+pipe.w+3===bird.x){
+        if(p[i].x+pipe.wd+1==bird.x||p[i].x+pipe.w+2==bird.x||p[i].x+pipe.w+3==bird.x){
           scoreInc.play(); //play sound during score update
           this.score++;
         }
