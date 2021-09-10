@@ -53,8 +53,8 @@ canvas.addEventListener("mousemove",function(e){
   let clickY = e.clientY-cvsP.top;
   let sClickX1 = canvas.width/2 - 17.5;
   let sClickX2 = canvas.width/2 + 17.5;
-  let sClickY1 = 306;
-  let sClickY2 = 354;
+  let sClickY1 = canvas.height/2 - 37.5;
+  let sClickY2 = canvas.height/2 + 10.5;
   console.log(clickX,clickY);
   if(state.current==state.start){
     if(clickX>=sClickX1&&clickX<=sClickX2&&clickY>=sClickY1&&clickY<=sClickY2)
@@ -69,10 +69,10 @@ canvas.addEventListener("mousemove",function(e){
     canvas.style.cursor == "pointer";
   }
   if(state.current==state.end){
-       let btnX1 =684;
-       let btnX2 =762;
-       let btnY1 =378;
-       let btnY2 =403;
+       let btnX1 = canvas.width/2 - 39;
+       let btnX2 = canvas.width/2 + 39;
+       let btnY1 = canvas.height/2+34.5;
+       let btnY2 = canvas.height/2+59.5;
        if(clickX>=btnX1&&clickX<=btnX2&&clickY>=btnY1&&clickY<=btnY2){
         canvas.style.cursor = "pointer";
        }
@@ -92,8 +92,8 @@ canvas.addEventListener("click",function(e){
 
       let sClickX1 = canvas.width/2 - 17.5;
       let sClickX2 = canvas.width/2 + 17.5;
-      let sClickY1 = 306;
-      let sClickY2 = 354;
+      let sClickY1 = canvas.height/2 - 37.5;
+      let sClickY2 = canvas.height/2 + 10.5;
       if(clickX>=sClickX1&&clickX<=sClickX2&&clickY>=sClickY1&&clickY<=sClickY2)
       {
         begin.play();
@@ -106,10 +106,10 @@ canvas.addEventListener("click",function(e){
        bird.moveBird();
        break;
      case state.end:
-       let btnX1 =684;
-       let btnX2 =762;
-       let btnY1 =378;
-       let btnY2 =403;
+      let btnX1 = canvas.width/2 - 39;
+      let btnX2 = canvas.width/2 + 39;
+      let btnY1 = canvas.height/2+34.5;
+      let btnY2 = canvas.height/2+59.5;
        if(clickX>=btnX1&&clickX<=btnX2&&clickY>=btnY1&&clickY<=btnY2){
         gameOver.end();
         state.current=state.start;
