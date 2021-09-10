@@ -379,35 +379,6 @@ let scoreBoard = {
   }
 }
 
-//medal Object 
-let medal ={
-  x : 636,
-  y: 287,
-  w : 45,
-  h: 45,
-  position : [{x:360,y:158},{x:360,y:112},{x:312,y:158}],
-  counter : -1,
-  drawImg:function(){
-    if(state.current===state.end && this.counter>=0){
-      canvasContext.drawImage(img,this.position[this.counter].x,this.position[this.counter].y,this.w,this.h,this.x,this.y,this.w,this.h);
-    }
-  },
-  updateScore : function(){
-    if(scoreBoard.best>5){  // medals will be only provided once the highscore is above 5
-      if(scoreBoard.score>=(scoreBoard.best))
-    {
-      this.counter=2;
-    }
-    else if(scoreBoard.score>=(scoreBoard.best*(2/3)))
-    {
-      this.counter=1;
-    }
-    else if(scoreBoard.score>=(scoreBoard.best*(1/3))){
-      this.counter=0;
-    }
-    }    
-  }
-}
 
 //Wellcome Frame/Screen
 let startGame = {
@@ -463,6 +434,35 @@ let gameOver = {
 }
 
 
+//medal Object 
+let medal ={
+  x : gameOver.x+25,
+  y: gameOver.y+85,
+  w : 45,
+  h: 45,
+  position : [{x:360,y:158},{x:360,y:112},{x:312,y:158}],
+  counter : -1,
+  drawImg:function(){
+    if(state.current===state.end && this.counter>=0){
+      canvasContext.drawImage(img,this.position[this.counter].x,this.position[this.counter].y,this.w,this.h,this.x,this.y,this.w,this.h);
+    }
+  },
+  updateScore : function(){
+    if(scoreBoard.best>5){  // medals will be only provided once the highscore is above 5
+      if(scoreBoard.score>=(scoreBoard.best))
+    {
+      this.counter=2;
+    }
+    else if(scoreBoard.score>=(scoreBoard.best*(2/3)))
+    {
+      this.counter=1;
+    }
+    else if(scoreBoard.score>=(scoreBoard.best*(1/3))){
+      this.counter=0;
+    }
+    }    
+  }
+}
 
 
 
