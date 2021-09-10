@@ -69,10 +69,10 @@ canvas.addEventListener("mousemove",function(e){
   }
   //checking for ending game
   if(state.current==state.end){
-       let btnX1 = canvas.width/2 - 39;
-       let btnX2 = canvas.width/2 + 39;
-       let btnY1 = canvas.height/2+34.5;
-       let btnY2 = canvas.height/2+59.5;
+       let btnX1 = canvas.width/2 - 40;
+       let btnX2 = canvas.width/2 + 40;
+       let btnY1 = gameOver.y + 172;
+       let btnY2 = gameOver.y + gameOver.h;
        if(clickX>=btnX1&&clickX<=btnX2&&clickY>=btnY1&&clickY<=btnY2){
         canvas.style.cursor = "pointer";
        }
@@ -107,10 +107,10 @@ canvas.addEventListener("click",function(e){
        bird.moveBird();
        break;
      case state.end:
-      let btnX1 = canvas.width/2 - 39;
-      let btnX2 = canvas.width/2 + 39;
-      let btnY1 = canvas.height/2+34.5;
-      let btnY2 = canvas.height/2+59.5;
+      let btnX1 = canvas.width/2 - 40;
+      let btnX2 = canvas.width/2 + 40;
+      let btnY1 = gameOver.y + 172;
+      let btnY2 = gameOver.y + gameOver.h;
        if(clickX>=btnX1&&clickX<=btnX2&&clickY>=btnY1&&clickY<=btnY2){
         gameOver.end();
         state.current=state.start;
@@ -440,7 +440,7 @@ let gameOver = {
   w : 225,
   h : 202,
   x : canvas.width/2 - (225/2),
-  y : 200,
+  y : canvas.height/2 - (202),
   drawImg:function(){
     if(state.current===state.end){
       canvasContext.drawImage(img,this.sX,this.sY,this.w,this.h,this.x,this.y,this.w,this.h);
