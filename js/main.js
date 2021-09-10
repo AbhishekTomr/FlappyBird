@@ -170,7 +170,7 @@ let ground = {
 //bird Object
 let bird = {
   BirdCoordinates : [{bx:276,by:112},{bx:276,by:139},{bx:276,by:164},{bx:276,by:139}], //different coordinates for each picture (3 picture used)
-  x: 150,
+  x: Math.round(canvas.width/15),
   y: canvas.height/5,
   w: 34,
   h: 26,
