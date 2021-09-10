@@ -51,8 +51,8 @@ canvas.addEventListener("mousemove",function(e){
   let cvsP = canvas.getBoundingClientRect();
   let clickX = e.clientX-cvsP.left;
   let clickY = e.clientY-cvsP.top;
-  let sClickX1 = 705;
-  let sClickX2 = 739;
+  let sClickX1 = canvas.width/2 - 17.5;
+  let sClickX2 = canvas.width/2 + 17.5;
   let sClickY1 = 306;
   let sClickY2 = 354;
   console.log(clickX,clickY);
@@ -90,8 +90,8 @@ canvas.addEventListener("click",function(e){
   {
      case state.start:
 
-      let sClickX1 = 705;
-      let sClickX2 = 739;
+      let sClickX1 = canvas.width/2 - 17.5;
+      let sClickX2 = canvas.width/2 + 17.5;
       let sClickY1 = 306;
       let sClickY2 = 354;
       if(clickX>=sClickX1&&clickX<=sClickX2&&clickY>=sClickY1&&clickY<=sClickY2)
